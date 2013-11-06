@@ -12,6 +12,9 @@ import time
 # Item Limit
 limit = 10
 
+# Time Limit (hours)
+timelimit = 24
+
 # Page File
 file = open('PATH_TO_HTML/index.html','w+')
 
@@ -56,13 +59,17 @@ def printRSS(rss,limit,file):
 				feeddate = time.localtime()
 		pubhours = int((time.mktime(time.gmtime()) - time.mktime(feeddate))/60/60)
 
-		if (count == limit) or (pubhours > 24):
+		if (count == limit) or (pubhours > timelimit):
 			break
 
 		realtext = ""
 		link = item.link
 		actualtext = item.title.encode('ascii','ignore').strip()
-		file.write("<li><a href=\"" + link + "\" target=\"_new\">" + actualtext + "</a> (<a href=\"https://getpocket.com/edit?url=" + link + "&title=" + actualtext + "\" target=\"_new\">p</a>)&emsp;" + str(pubhours).zfill(2) + "h")
+		if (pubhours == 0):
+			printpubhours = "<b>" + str(pubhours).zfill(2) + "h</b>"
+		else:
+			printpubhours = str(pubhours).zfill(2) + "h"
+		file.write("<li><a href=\"" + link + "\" target=\"_new\">" + actualtext + "</a> (<a href=\"https://getpocket.com/edit?url=" + link + "&title=" + actualtext + "\" target=\"_new\">p</a>)&emsp;" + printpubhours)
 		count = count + 1
 	file.write("</ul>")
 
