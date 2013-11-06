@@ -12,9 +12,6 @@ import time
 # Item Limit
 limit = 10
 
-# Time Limit (in hours)
-hours = 24
-
 # Page File
 file = open('PATH_TO_HTML/index.html','w+')
 
@@ -59,7 +56,7 @@ def printRSS(rss,limit,file):
 				feeddate = time.localtime()
 		pubhours = int((time.mktime(time.gmtime()) - time.mktime(feeddate))/60/60)
 
-		if (count == limit) or (pubhours > hours):
+		if (count == limit) or (pubhours > 24):
 			break
 
 		realtext = ""
@@ -74,6 +71,7 @@ file.write("<meta http-equiv=\"Cache-Control\" content=\"no-cache, no-store, mus
 file.write("<meta http-equiv=\"Pragma\" content=\"no-cache\" />")
 file.write("<meta http-equiv=\"Expires\" content=\"0\" />")
 file.write("<meta http-equiv=\"Refresh\" content=\"600\" />")
+file.write("<meta name=viewport content=\"width=device-width, initial-scale=1.0, minimum-scale=0.5 maximum-scale=1.0\">")
 file.write("<title>my ultramookie</title></head><body>")
 
 for feed in feeds:
