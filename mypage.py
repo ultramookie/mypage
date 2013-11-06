@@ -8,6 +8,8 @@ import re
 import urllib2
 import feedparser
 import time
+import os
+import binascii
 
 # Item Limit
 limit = 10
@@ -16,7 +18,9 @@ limit = 10
 timelimit = 24
 
 # Page File
-file = open('PATH_TO_HTML/index.html','w+')
+realfile = 'PATH_TO_HTML/index.html'
+randfile = '/tmp/' + binascii.b2a_hex(os.urandom(15))
+file = open(randfile,'w+')
 
 # RSS Feeds
 feeds = [	"http://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss",
@@ -87,3 +91,5 @@ for feed in feeds:
 file.write("<br /><hr />")
 file.write("<b>last update:</b> " + time.strftime("%c"))
 file.write("</body></html")
+file.close()
+os.rename(randfile,realfile)
