@@ -12,8 +12,11 @@ import time
 # Item Limit
 limit = 10
 
+# Time Limit (in hours)
+hours = 24
+
 # Page File
-file = open('PATH_TO_WEBSERVER/index.html','w+')
+file = open('PATH_TO_HTML/index.html','w+')
 
 # RSS Feeds
 feeds = [	"http://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss",
@@ -56,7 +59,7 @@ def printRSS(rss,limit,file):
 				feeddate = time.localtime()
 		pubhours = int((time.mktime(time.gmtime()) - time.mktime(feeddate))/60/60)
 
-		if (count == limit) or (pubhours > 24):
+		if (count == limit) or (pubhours > hours):
 			break
 
 		realtext = ""
