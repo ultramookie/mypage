@@ -5,6 +5,7 @@
 # http://www.gnu.org/licenses/gpl-3.0.html
 
 import re
+import urllib
 import urllib2
 import feedparser
 import time
@@ -69,11 +70,13 @@ def printRSS(rss,limit,file):
 		realtext = ""
 		link = item.link
 		actualtext = item.title.encode('ascii','ignore').strip()
+		safelink = urllib.quote_plus(link.encode('utf8'))
+		safetitle = urllib.quote_plus(actualtext.encode('utf8'))
 		if (pubhours == 0):
 			printpubhours = "<b>" + str(pubhours).zfill(2) + "h</b>"
 		else:
 			printpubhours = str(pubhours).zfill(2) + "h"
-		file.write("<li><a href=\"" + link + "\" target=\"_new\">" + actualtext + "</a> (<a href=\"https://getpocket.com/edit?url=" + link + "&title=" + actualtext + "\" target=\"_new\">p</a>)&emsp;" + printpubhours)
+		file.write("<li><a href=\"" + link + "\" target=\"_new\">" + actualtext + "</a> (<a href=\"https://getpocket.com/edit?url=" + safelink + "&title=" + safetitle + "\" target=\"_pocket\">p</a>)&emsp;" + printpubhours)
 		count = count + 1
 	file.write("</ul>")
 
