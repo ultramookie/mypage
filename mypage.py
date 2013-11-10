@@ -76,8 +76,8 @@ def printRSS(rss,limit,file):
 			printpubhours = "<b>" + str(pubhours).zfill(2) + "h</b>"
 		else:
 			printpubhours = str(pubhours).zfill(2) + "h"
-		#file.write("<li><a href=\"" + link + "\" target=\"_new\">" + actualtext + "</a> (<a href=\"https://getpocket.com/edit?url=" + safelink + "&title=" + safetitle + "\" target=\"_pocket\">p</a>)&emsp;" + printpubhours)
-		file.write("<li><a href=\"" + link + "\" target=\"_new\">" + actualtext + "</a> <iframe border=\"0\" scrolling=\"no\" width=\"78\" height=\"17\" allowtransparency=\"true\" frameborder=\"0\" style=\"margin-bottom: -3px; z-index: 1338; border: 0px; background-color: transparent; overflow: hidden;\" src=\"http://www.instapaper.com/e2?url=" + safelink + "&title=" + safetitle + "\" ></iframe>&emsp;" + printpubhours)
+		file.write("<li><a href=\"" + link + "\" target=\"_new\">" + actualtext + "</a> (<a href=\"https://getpocket.com/edit?url=" + safelink + "&title=" + safetitle + "\" target=\"_pocket\">p</a>)&emsp;" + printpubhours)
+		#file.write("<li><a href=\"" + link + "\" target=\"_new\">" + actualtext + "</a> <iframe border=\"0\" scrolling=\"no\" width=\"78\" height=\"17\" allowtransparency=\"true\" frameborder=\"0\" style=\"margin-bottom: -3px; z-index: 1338; border: 0px; background-color: transparent; overflow: hidden;\" src=\"http://www.instapaper.com/e2?url=" + safelink + "&title=" + safetitle + "\" ></iframe>&emsp;" + printpubhours)
 		count = count + 1
 	file.write("</ul>")
 
