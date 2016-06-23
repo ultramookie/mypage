@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # mypage
 # steve mookie kong
 # licensed under gplv3
