@@ -1,0 +1,17 @@
+html {
+	/* background: #FFF; */
+}
+
+body {
+	font-family: calibri,helvetica,verdana; font-size: 14pt;
+}
+
+a {
+	color:#202020;
+	text-decoration:none;
+}
+
+a:hover {
+	color:#FC7901;
+	text-decoration:none;
+}
