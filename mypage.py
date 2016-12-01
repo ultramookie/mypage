@@ -29,7 +29,7 @@ def printRSS(config,rss,file):
   try:
     feedtitle = feed.feed.title.split("-")
     title = feedtitle[0]
-    file.write("<br /><b>%s</b>" % (title))
+    file.write("<br /><b>%s</b>" % (title..encode('utf8')))
     file.write("<ul />")
   except AttributeError:
     print "%s has issues. Please check the URL." % (rss)
