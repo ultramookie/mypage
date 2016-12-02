@@ -44,7 +44,9 @@ def printRSS(config,rss,file):
         feeddate = time.localtime()
     pubhours = int((time.mktime(time.gmtime()) - time.mktime(feeddate))/60/60)
 
-    if (count == limit) or (pubhours > timelimit):
+    # stop after hitting the limit of allowed items, or if items are too old
+    # but always allow at least one item if possible
+    if ((count == limit) or (pubhours > timelimit)) and (count != 0):
       break
 
     realtext = ""
