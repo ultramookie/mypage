@@ -56,7 +56,7 @@ def printRSS(config,rss,file):
       printpubhours = "<b>%s</b>" % (str(pubhours).zfill(2))
     else:
       printpubhours = "%s" % (str(pubhours).zfill(2))
-    file.write("<li><a href=\"%s\" target=\"_new\">%s</a> %sh" % (link, actualtext, printpubhours))
+    file.write("<li><a href=\"%s\" target=\"_new\">%s</a> %sh" % (link.encode('utf8'), actualtext.encode('utf8'), printpubhours))
     count = count + 1
   file.write("</ul>")
 
